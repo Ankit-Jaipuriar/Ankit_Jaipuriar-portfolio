@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Profile from "../../assets/me.jpeg";
-import videoFile from "../../assets/videocv.mp4"
+import videoFile from "../../assets/video.mp4"
 import { FaDownload, FaPlay } from "react-icons/fa";
 import "./home.css";
 
