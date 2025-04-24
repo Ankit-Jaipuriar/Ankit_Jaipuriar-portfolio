@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Profile from "../../assets/me.jpeg";
-import videoFile from "../../assets/video.mp4"
+import videoFile from "../../assets/video.mp4";
 import { FaDownload, FaPlay } from "react-icons/fa";
 import "./home.css";
 
@@ -11,13 +11,30 @@ const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef(null);
   const circleRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = () => {
+      if (loading || showVideo) {
+        setShowVideo(false);
+        setLoading(false);
+      }
+    };
+  
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [loading, showVideo]);
+  
 
   const openResumeInNewTab = () => {
     window.open(resumeUrl, "_blank");
   };
 
   const toggleVideo = () => {
-    setShowVideo((prev) => !prev);
+    if (!loading && !showVideo) {
+      setLoading(true);
+      setShowVideo(true);
+    }
   };
 
   useEffect(() => {
@@ -36,52 +53,72 @@ const Home = () => {
         circle.style.strokeDashoffset = offset;
       };
 
+      const handleLoadedData = () => {
+        setLoading(false);
+      };
+
       video.addEventListener("timeupdate", updateProgress);
-      return () => video.removeEventListener("timeupdate", updateProgress);
+      video.addEventListener("loadeddata", handleLoadedData);
+
+      return () => {
+        video.removeEventListener("timeupdate", updateProgress);
+        video.removeEventListener("loadeddata", handleLoadedData);
+      };
     }
   }, [showVideo]);
 
   return (
-    <motion.section
-      className="home section grid"
-      initial="hidden"
-      animate="visible"
-    >
+    <motion.section className="home section grid" initial="hidden" animate="visible">
       {/* Separate Section for Video Text */}
-<div className="video-text-section">
-  <p className="video-text">Watch My Video CV</p>
-</div>
+      <div className="video-text-section">
+        <p className="video-text">Watch My Video CV</p>
+      </div>
 
       {/* Floating Video Button */}
-      <div className="video-cv-thumbnail" onClick={toggleVideo}>
+      <div
+        className={`video-cv-thumbnail ${loading || showVideo ? "disabled" : ""}`}
+        onClick={toggleVideo}
+      >
         <img src={Profile} alt="Video CV" />
         <FaPlay className="video-play-icon" />
       </div>
+
+      {/* Loading or Playing Overlay */}
+      {(loading || showVideo) && (
+        <div className="video-loading-overlay">
+          {loading && (
+            <>
+              <div className="spinner"></div>
+              <p>Loading Video... (Press any key to cancel)</p>
+            </>
+          )}
+        </div>
+      )}
 
       {/* Circular Video Player */}
       {showVideo && (
         <div className="video-cv-center-player">
           <div className="circular-video-container">
             <svg className="progress-ring" width="600" height="600">
-  <circle
-    ref={circleRef}
-    className="progress-ring__circle"
-    strokeWidth="4"
-    fill="transparent"
-    r="296"      // 600/2 - 4 (stroke width * 2 margin)
-    cx="300"
-    cy="300"
-  />
-</svg>
+              <circle
+                ref={circleRef}
+                className="progress-ring__circle"
+                strokeWidth="4"
+                fill="transparent"
+                r="296"
+                cx="300"
+                cy="300"
+              />
+            </svg>
 
-<video
-  ref={videoRef}
-  src={videoFile}
-  autoPlay
-  playsInline
-  className="circular-video"
-/>
-
+            <video
+              ref={videoRef}
+              src={videoFile}
+              autoPlay
+              playsInline
+              className="circular-video"
+              onCanPlay={() => setLoading(false)}
+            />
           </div>
         </div>
       )}
@@ -91,7 +128,7 @@ const Home = () => {
       <motion.div className="home__content">
         <div className="home__data">
           <h1 className="home__title">
-            <span>I'm Ankit Kumar Jaipuriar.</span> 
+            <span>I'm Ankit Kumar Jaipuriar.</span>
           </h1>
           <h2 className="home__subtitle">
             Passionate about building scalable web applications and exploring cutting-edge technologies.
