@@ -60,7 +60,7 @@ export const links = [
 export const personalInfo = [
   {
     id: 1,
-    description:"Hello, I'm Ankit Kumar Jaipuriar, Experienced in full-stack development using React, Node.js, Express.js, and MongoDB. Skilled in AI integration, natural language processing (NLP), and real-time communication platforms. Proficient in C++, Python, JavaScript, and Java, with expertise in JWT authentication, RESTful APIs, and WebContainer technology. Strong in competitive programming, solving 500+ questions on platforms like CodeChef and LeetCode. Familiar with Docker, Git, and Redux Toolkit for state management and containerization."},
+    description:"Hello, I'm Ankit Kumar Jaipuriar, Experienced in full-stack development using React, Node.js, Express.js, and MongoDB. Skilled in AI integration, natural language processing (NLP), and real-time communication platforms. Proficient in C++, Python, JavaScript, and Java, with expertise in JWT authentication, RESTful APIs, and WebContainer technology. Strong in competitive programming, solving 700+ questions on platforms like CodeChef and LeetCode. Familiar with Docker, Git, and Redux Toolkit for state management and containerization."},
 
   // {
   //   id: 2,
@@ -88,7 +88,7 @@ export const personalInfo = [
 export const stats = [
   {
     id: 1,
-    no: "600+",
+    no: "700+",
     title: "Coding<br /> Questions",
   },
 

@@ -12,9 +12,12 @@ import cert3 from "../../assets/cert3.png"; // Replace with actual cert image
 import cert4 from "../../assets/cert4.png"; // Replace with actual cert image
 import leetLogo from "../../assets/leetcode.png"; // Add logo to assets
 import chefLogo from "../../assets/codechef.png"; // Add logo to assets
+import hackLogo from "../../assets/hackr.png"; // Add logo to assets
+import codfLogo from "../../assets/codf.png"; // Add logo to assets
 
 const About = () => {
   const [showAllCerts, setShowAllCerts] = useState(false);
+  const [showAllProfiles, setShowAllProfiles] = useState(false); // NEW
 
   return (
     <main className="section container">
@@ -47,22 +50,45 @@ const About = () => {
 
       {/* Dashboard Section */}
       <section className="dashboard">
-        <h3 className="section__subtitle subtitle__center">Coding Dashboard</h3>
-        <div className="dashboard__cards grid">
-          <div className="dashboard__card leetcode">
-            <img src={leetLogo} alt="LeetCode" className="dashboard__logo" />
-            <h4>LeetCode</h4>
-            <p>Solved: 390+ problems</p>
-            <a href="https://leetcode.com/u/Ankit_Jaipuriar/" target="_blank" rel="noreferrer">View Profile</a>
-          </div>
-          <div className="dashboard__card codechef">
-            <img src={chefLogo} alt="CodeChef" className="dashboard__logo" />
-            <h4>CodeChef</h4>
-            <p>2★ | Max Rating: 1449</p>
-            <a href="https://www.codechef.com/users/ankitjaipuriar" target="_blank" rel="noreferrer">View Profile</a>
-          </div>
+  <h3 className="section__subtitle subtitle__center">Coding Dashboard</h3>
+  <div className="dashboard__cards grid">
+    <div className="dashboard__card leetcode">
+      <img src={leetLogo} alt="LeetCode" className="dashboard__logo" />
+      <h4>LeetCode</h4>
+      <p>Solved: 390+ problems</p>
+      <a href="https://leetcode.com/u/Ankit_Jaipuriar/" target="_blank" rel="noreferrer">View Profile</a>
+    </div>
+    <div className="dashboard__card codechef">
+      <img src={chefLogo} alt="CodeChef" className="dashboard__logo" />
+      <h4>CodeChef</h4>
+      <p>2★ | Max Rating: 1449</p>
+      <a href="https://www.codechef.com/users/ankitjaipuriar" target="_blank" rel="noreferrer">View Profile</a>
+    </div>
+
+    {showAllProfiles && (
+      <>
+        <div className="dashboard__card">
+          <img src={hackLogo} alt="HackerRank" className="dashboard__logo" />
+          <h4>HackerRank</h4>
+          <p>5★ in Problem Solving</p>
+          <a href="https://www.hackerrank.com/profile/Ankit_Jaipuriar" target="_blank" rel="noreferrer">View Profile</a>
         </div>
-      </section>
+        <div className="dashboard__card">
+          <img src={codfLogo} alt="Codeforces" className="dashboard__logo" />
+          <h4>Codeforces</h4>
+          <p>Max.ratings : 1020</p>
+          <a href="https://codeforces.com/profile/ankit_jaipuriar" target="_blank" rel="noreferrer">View Profile</a>
+        </div>
+      </>
+    )}
+  </div>
+
+  <div className="cert__toggle">
+    <button onClick={() => setShowAllProfiles(!showAllProfiles)} className="button">
+      {showAllProfiles ? "View Less" : "View More"}
+    </button>
+  </div>
+</section>
 
       <br></br>
 
