@@ -1,7 +1,7 @@
 .style__switcher{
     position: fixed;
     left: 0;
-    top: 10%;
+    top: 70%;
     background-color: var(--text-white);
     width: 200px;
     padding: 15px;
@@ -171,3 +171,4 @@
     top: 2%;
     right: 15px;
   } */ 
+

@@ -267,9 +267,99 @@
     }
   }
     
-  @media screen and (max-width: 700px) {
-    .caution__message {
-        display: block;
-        font-size: 0.9rem;
+  @media (max-width: 700px) {
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      justify-content: center;
+      box-sizing: border-box; /* Prevent overflow */
+  
+      color: white; /* Ensure text is visible on the background */
+      background: repeating-linear-gradient(45deg, rgba(221, 13, 13, 0.05) 0%, rgba(183, 55, 55, 0.1) 25%, rgba(199, 28, 28, 0.05) 50%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.05) 100%);
     }
-}
+  
+    .home__img {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      margin-top: 400px; /* Adjust to move image to center */
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+  
+    .home__data {
+      text-align: center;
+      transform: scale(0.7); /* Zoom out content */
+      transform-origin: top center;
+    }
+  
+    .home__title {
+      font-size: 1.5rem;
+      padding-left: 10px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+  
+    .home__title::before {
+      display: none; /* Remove blue line */
+    }
+  
+    .home__description {
+      text-align: left;
+      font-size: 0.6rem;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+  
+    .home__button {
+      font-size: 1rem;
+      padding: 5px 10px;
+    }
+  
+    .color__block {
+      display: none;
+    }
+  
+    .video-text-section {
+      top: 1.8rem;
+      right: 7.5rem;
+      width: 150px;
+      height: 40px;
+    }
+  
+    .video-text {
+      font-size: 0.7rem;
+    }
+  
+    .video-cv-thumbnail {
+      top: 1.8rem;
+      right: 5rem;
+      width: 40px;
+      height: 40px;
+    }
+  
+    .circular-video-container,
+    .circular-video,
+    .progress-ring {
+      width: 180px;
+      height: 180px;
+    }
+  
+    .progress-ring__circle {
+      stroke-width: 1.5;
+    }
+  
+    .video-loading-overlay {
+      font-size: 0.9rem;
+    }
+  
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border-width: 3px;
+    }
+  }
+  

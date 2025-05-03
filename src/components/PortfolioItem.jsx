@@ -10,16 +10,20 @@ const PortfolioItem = ({ img, title, details }) => {
 
   return (
     <div className="portfolio__item">
-      <img src={img} alt="" className="portfolio__img" />
-
-      <div className="portfolio__hover" onClick={toggleModal}>
-        <h3 className="portfolio__title">{title}</h3>
-      </div>
+      <img src={img} alt={title} className="portfolio__img" onClick={toggleModal} />
+      <h3 className="portfolio__title">{title}</h3>
 
       {modal && (
         <div className="portfolio__modal">
           <div className="portfolio__modal-content">
-            <img src={Close} alt='' className="modal__close" onClick={toggleModal} />
+            {/* Single close button */}
+            <img
+              src={Close}
+              alt="Close"
+              className="modal__close"
+              onClick={toggleModal}
+            />
+
             <h3 className="modal__title">{title}</h3>
 
             <ul className="modal__list grid">
@@ -35,7 +39,7 @@ const PortfolioItem = ({ img, title, details }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                          Visit
+                        Visit
                       </a>
                     ) : (
                       <span className="item__details">{desc}</span>
@@ -45,11 +49,8 @@ const PortfolioItem = ({ img, title, details }) => {
               ))}
             </ul>
 
-            <img src={img} alt="" className="modal__img" />
+            <img src={img} alt={title} className="modal__img" />
           </div>
-          <span className="modal__close" onClick={toggleModal}>
-            <img src={Close} alt="Close" />
-          </span>
         </div>
       )}
     </div>
