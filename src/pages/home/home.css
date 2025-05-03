@@ -332,7 +332,11 @@
   
     .video-text {
       font-size: 0.7rem;
-    }
+      color: rgb(117, 23, 238);  /* This changes the font color */
+      font-weight:bolder;
+      text-decoration:overline;
+  }
+  
   
     .video-cv-thumbnail {
       top: 1.8rem;
